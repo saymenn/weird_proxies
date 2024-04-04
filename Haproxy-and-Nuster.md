@@ -51,6 +51,12 @@ Cache's been partly implemented in this version of HAproxy. It was not tested. [
 ```
 acl restricted_page path_beg /admin
 ```
+- Bypass `/%61dmin` also works for:
+```
+http-request deny if { path_beg /admin }
+
+NOTE: /Admin //admin and /admin/ won't work in this case
+```
 - Bypass `/log/` - any trailing symbol (e.g. /)
 ```
 acl restricted_page path_beg,url_dec  /log
